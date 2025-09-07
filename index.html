@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoriaHub - Your Ultimate Blog & Product Review Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-book-open"></i>
+                        <span>StoriaHub</span>
+                    </a>
+                    <div class="nav-menu" id="navMenu">
+                        <a href="index.html" class="nav-link active">Home</a>
+                        <a href="#blog" class="nav-link">Blog</a>
+                        <a href="products.html" class="nav-link">Products</a>
+                        <a href="about.html" class="nav-link">About</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </div>
+                    <div class="nav-actions">
+                        <button class="search-btn" id="searchToggle">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="menu-toggle" id="menuToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="search-bar" id="searchBar">
+                    <input type="text" id="searchInput" placeholder="Search articles, products, reviews...">
+                    <button id="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to StoriaHub</h1>
+            <p class="hero-subtitle">Discover Amazing Stories, Product Reviews & Platform Recommendations</p>
+            <div class="hero-buttons">
+                <a href="#featured" class="btn btn-primary">Explore Articles</a>
+                <a href="products.html" class="btn btn-secondary">View Products</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800" alt="Blog Hero">
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Browse Categories</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="technology">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Technology</h3>
+                    <span class="count">15 Articles</span>
+                </div>
+                <div class="category-card" data-category="lifestyle">
+                    <i class="fas fa-heart"></i>
+                    <h3>Lifestyle</h3>
+                    <span class="count">23 Articles</span>
+                </div>
+                <div class="category-card" data-category="business">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Business</h3>
+                    <span class="count">18 Articles</span>
+                </div>
+                <div class="category-card" data-category="travel">
+                    <i class="fas fa-plane"></i>
+                    <h3>Travel</h3>
+                    <span class="count">12 Articles</span>
+                </div>
+                <div class="category-card" data-category="health">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Health</h3>
+                    <span class="count">20 Articles</span>
+                </div>
+                <div class="category-card" data-category="food">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Food</h3>
+                    <span class="count">16 Articles</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section id="featured" class="featured-articles">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Articles</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="technology">Technology</button>
+                    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+                    <button class="filter-btn" data-filter="business">Business</button>
+                </div>
+            </div>
+
+            <div id="blog" class="blog-grid">
+                <!-- Article 1 -->
+                <article class="blog-card" data-category="technology" data-date="2025-08-15">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800" alt="AI Technology">
+                        <span class="blog-category">Technology</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> August 15, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Sarah Johnson</span>
+                        </div>
+                        <h3 class="blog-title">The Future of AI: Revolutionary Platforms Transforming Industries</h3>
+                        <p class="blog-excerpt">Explore the latest AI platforms that are reshaping how businesses operate. From machine learning tools to automated workflows, discover the top recommendations for 2025.</p>
+                        <a href="article1.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card" data-category="lifestyle" data-date="2025-07-22">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800" alt="Smart Home">
+                        <span class="blog-category">Lifestyle</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> July 22, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Michael Chen</span>
+                        </div>
+                        <h3 class="blog-title">Smart Home Products That Actually Make Life Easier</h3>
+                        <p class="blog-excerpt">A comprehensive review of the best smart home devices in 2025. From security systems to voice assistants, find out which products deliver on their promises.</p>
+                        <a href="article2.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card" data-category="business" data-date="2025-06-10">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Business Tools">
+                        <span class="blog-category">Business</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> June 10, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Emily Rodriguez</span>
+                        </div>
+                        <h3 class="blog-title">Top 10 Project Management Platforms for Remote Teams</h3>
+                        <p class="blog-excerpt">Navigate the world of project management tools with our detailed comparison. Features, pricing, and real-world performance tested by industry professionals.</p>
+                        <a href="article3.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="blog-card" data-category="technology" data-date="2025-05-28">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" alt="Cybersecurity">
+                        <span class="blog-category">Technology</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> May 28, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> David Kim</span>
+                        </div>
+                        <h3 class="blog-title">Essential Cybersecurity Tools Every Business Needs</h3>
+                        <p class="blog-excerpt">Protect your digital assets with these recommended security platforms. In-depth analysis of features, pricing, and effectiveness against modern threats.</p>
+                        <a href="article4.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="blog-card" data-category="lifestyle" data-date="2025-04-15">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800" alt="Fitness">
+                        <span class="blog-category">Lifestyle</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> April 15, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Jessica White</span>
+                        </div>
+                        <h3 class="blog-title">Fitness Apps Reviewed: Which Ones Deliver Real Results?</h3>
+                        <p class="blog-excerpt">We tested 20 popular fitness platforms to find the best ones for different goals. From weight loss to muscle building, discover what actually works.</p>
+                        <a href="article5.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="blog-card" data-category="business" data-date="2025-03-20">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800" alt="E-commerce">
+                        <span class="blog-category">Business</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> March 20, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Robert Taylor</span>
+                        </div>
+                        <h3 class="blog-title">E-commerce Platform Showdown: Shopify vs WooCommerce vs BigCommerce</h3>
+                        <p class="blog-excerpt">Detailed comparison of leading e-commerce solutions. Performance metrics, features, and real merchant experiences to help you choose the right platform.</p>
+                        <a href="article6.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 7 -->
+                <article class="blog-card" data-category="technology" data-date="2025-02-14">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?w=800" alt="Cloud Computing">
+                        <span class="blog-category">Technology</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> February 14, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Lisa Anderson</span>
+                        </div>
+                        <h3 class="blog-title">Cloud Storage Solutions Compared: AWS vs Google Cloud vs Azure</h3>
+                        <p class="blog-excerpt">Navigate the complex world of cloud platforms with our comprehensive guide. Pricing, performance, and features analyzed for different use cases.</p>
+                        <a href="article7.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 8 -->
+                <article class="blog-card" data-category="lifestyle" data-date="2025-02-01">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800" alt="Productivity">
+                        <span class="blog-category">Lifestyle</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> February 1, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Mark Thompson</span>
+                        </div>
+                        <h3 class="blog-title">Productivity Tools That Changed My Work Life</h3>
+                        <p class="blog-excerpt">Personal reviews of task management and productivity platforms. Real-world testing reveals which tools truly boost efficiency and which are just hype.</p>
+                        <a href="article8.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 9 -->
+                <article class="blog-card" data-category="business" data-date="2025-01-18">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800" alt="Marketing">
+                        <span class="blog-category">Business</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> January 18, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Amanda Foster</span>
+                        </div>
+                        <h3 class="blog-title">Digital Marketing Platforms That Deliver ROI</h3>
+                        <p class="blog-excerpt">Comprehensive review of marketing automation tools and platforms. Data-driven insights on what works for different business sizes and industries.</p>
+                        <a href="article9.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 10 -->
+                <article class="blog-card" data-category="technology" data-date="2025-01-05">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800" alt="VR Technology">
+                        <span class="blog-category">Technology</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> January 5, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Chris Martinez</span>
+                        </div>
+                        <h3 class="blog-title">VR Platforms Review: The Future of Digital Interaction</h3>
+                        <p class="blog-excerpt">Exploring virtual reality platforms and their applications. From gaming to business meetings, discover which VR solutions are worth the investment.</p>
+                        <a href="article10.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <!-- Travel Article 1 -->
+                <article class="blog-card" data-category="travel" data-date="2025-07-30">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800" alt="Travel Apps">
+                        <span class="blog-category">Travel</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> July 30, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Rachel Adams</span>
+                        </div>
+                        <h3 class="blog-title">Best Travel Planning Apps for Digital Nomads</h3>
+                        <p class="blog-excerpt">Comprehensive review of travel apps and platforms that make planning, booking, and navigating your adventures seamless and stress-free.</p>
+                        <a href="article11.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Travel Article 2 -->
+                <article class="blog-card" data-category="travel" data-date="2025-05-15">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=800" alt="Travel Gear">
+                        <span class="blog-category">Travel</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> May 15, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Tom Wilson</span>
+                        </div>
+                        <h3 class="blog-title">Essential Travel Gear: 2025 Product Reviews</h3>
+                        <p class="blog-excerpt">From smart luggage to portable chargers, we test and review the must-have travel accessories for modern explorers.</p>
+                        <a href="article12.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Health Article 1 -->
+                <article class="blog-card" data-category="health" data-date="2025-08-05">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800" alt="Health Tech">
+                        <span class="blog-category">Health</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> August 5, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Dr. Jennifer Lee</span>
+                        </div>
+                        <h3 class="blog-title">Digital Health Platforms Revolutionizing Healthcare</h3>
+                        <p class="blog-excerpt">Exploring telemedicine apps, health tracking platforms, and AI-powered diagnostic tools that are changing how we manage our health.</p>
+                        <a href="article13.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Health Article 2 -->
+                <article class="blog-card" data-category="health" data-date="2025-06-20">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800" alt="Fitness Trackers">
+                        <span class="blog-category">Health</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> June 20, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Mike Thompson</span>
+                        </div>
+                        <h3 class="blog-title">Fitness Tracker Showdown: Which One Reigns Supreme?</h3>
+                        <p class="blog-excerpt">In-depth comparison of the latest fitness wearables, from Apple Watch to Garmin, helping you choose the perfect health companion.</p>
+                        <a href="article14.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Health Article 3 -->
+                <article class="blog-card" data-category="health" data-date="2025-03-10">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800" alt="Mental Health Apps">
+                        <span class="blog-category">Health</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> March 10, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Sarah Mitchell</span>
+                        </div>
+                        <h3 class="blog-title">Mental Health Apps That Actually Help: A Therapist's Review</h3>
+                        <p class="blog-excerpt">Professional evaluation of meditation, therapy, and wellness apps that provide real support for mental health management.</p>
+                        <a href="article15.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Food Article 1 -->
+                <article class="blog-card" data-category="food" data-date="2025-07-10">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800" alt="Meal Delivery">
+                        <span class="blog-category">Food</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> July 10, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Chef Antonio</span>
+                        </div>
+                        <h3 class="blog-title">Meal Delivery Services Compared: Quality vs Convenience</h3>
+                        <p class="blog-excerpt">Comprehensive review of popular meal kit services and food delivery platforms, analyzing taste, nutrition, and value for money.</p>
+                        <a href="article16.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Food Article 2 -->
+                <article class="blog-card" data-category="food" data-date="2025-04-25">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=800" alt="Kitchen Gadgets">
+                        <span class="blog-category">Food</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> April 25, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Julia Chen</span>
+                        </div>
+                        <h3 class="blog-title">Smart Kitchen Gadgets That Transform Your Cooking</h3>
+                        <p class="blog-excerpt">From AI-powered ovens to precision cookers, discover the kitchen tech that's worth the investment for home chefs.</p>
+                        <a href="article17.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Food Article 3 -->
+                <article class="blog-card" data-category="food" data-date="2025-02-08">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800" alt="Food Apps">
+                        <span class="blog-category">Food</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="date"><i class="far fa-calendar"></i> February 8, 2025</span>
+                            <span class="author"><i class="far fa-user"></i> Marcus Bell</span>
+                        </div>
+                        <h3 class="blog-title">Recipe Apps and Platforms for Every Home Cook</h3>
+                        <p class="blog-excerpt">Navigate the world of cooking apps with our detailed comparison of features, recipe quality, and user experience.</p>
+                        <a href="article18.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn" id="prevPage"><i class="fas fa-chevron-left"></i></button>
+                <div class="page-numbers" id="pageNumbers">
+                    <button class="page-number active">1</button>
+                    <button class="page-number">2</button>
+                    <button class="page-number">3</button>
+                </div>
+                <button class="page-btn" id="nextPage"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to StoriaHub</h2>
+                <p>Get the latest articles, product reviews, and platform recommendations delivered to your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-book-open"></i>
+                        <span>StoriaHub</span>
+                    </div>
+                    <p>Your trusted source for quality content, product reviews, and platform recommendations.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Travel</a></li>
+                        <li><a href="#">Health</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@storiahub.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New York, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StoriaHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

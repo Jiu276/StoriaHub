@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Reviews - StoriaHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .products-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .products-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .products-section {
+            padding: 4rem 0;
+        }
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--light-color);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .thumb-images {
+            display: flex;
+            gap: 1rem;
+        }
+        .thumb-images img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .thumb-images img:hover {
+            transform: scale(1.1);
+        }
+        .product-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .price-tag {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.2rem;
+            margin-left: 1rem;
+        }
+        .product-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        .product-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        .product-features li i {
+            color: var(--secondary-color);
+            margin-right: 1rem;
+        }
+        .review-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--border-color);
+        }
+        .review-card {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .comparison-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .comparison-table th {
+            background: var(--primary-color);
+            color: white;
+        }
+        .comparison-table tr:hover {
+            background: rgba(37, 99, 235, 0.05);
+        }
+        @media (max-width: 768px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+            .products-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-book-open"></i>
+                        <span>StoriaHub</span>
+                    </a>
+                    <div class="nav-menu" id="navMenu">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html#blog" class="nav-link">Blog</a>
+                        <a href="products.html" class="nav-link active">Products</a>
+                        <a href="about.html" class="nav-link">About</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </div>
+                    <div class="nav-actions">
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="menu-toggle" id="menuToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <h1>Product Reviews & Recommendations</h1>
+            <p>In-depth analysis and honest reviews of the latest products and platforms</p>
+        </div>
+    </section>
+
+    <!-- Featured Product -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Product Review</h2>
+            
+            <div class="product-detail">
+                <div class="product-gallery">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800" alt="Premium Wireless Headphones" class="main-image" id="mainImage">
+                    <div class="thumb-images">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200" alt="View 1" onclick="changeImage(this.src)">
+                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=200" alt="View 2" onclick="changeImage(this.src)">
+                        <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=200" alt="View 3" onclick="changeImage(this.src)">
+                        <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=200" alt="View 4" onclick="changeImage(this.src)">
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h2>SoundMax Pro X1 - Premium Wireless Headphones</h2>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span>4.5/5 (324 Reviews)</span>
+                    </div>
+                    <div class="price-tag">
+                        $299.99 <span class="old-price">$399.99</span>
+                    </div>
+                    
+                    <p>Experience superior sound quality with the SoundMax Pro X1. These premium wireless headphones combine cutting-edge technology with exceptional comfort for an unmatched listening experience.</p>
+                    
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Active Noise Cancellation (ANC)</li>
+                        <li><i class="fas fa-check"></i> 40-hour battery life</li>
+                        <li><i class="fas fa-check"></i> Hi-Res Audio certified</li>
+                        <li><i class="fas fa-check"></i> Multipoint Bluetooth 5.3</li>
+                        <li><i class="fas fa-check"></i> Premium leather ear cushions</li>
+                        <li><i class="fas fa-check"></i> Foldable design with carrying case</li>
+                    </ul>
+                    
+                    <div class="product-buttons">
+                        <a href="#" class="btn btn-primary">Check Price on Amazon</a>
+                        <a href="#reviews" class="btn btn-secondary">Read Reviews</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Comparison -->
+            <h2 class="section-title">Product Comparison</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>SoundMax Pro X1</th>
+                            <th>AudioTech Elite</th>
+                            <th>BassBoost 500</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Price</td>
+                            <td><strong>$299.99</strong></td>
+                            <td>$349.99</td>
+                            <td>$249.99</td>
+                        </tr>
+                        <tr>
+                            <td>Battery Life</td>
+                            <td><strong>40 hours</strong></td>
+                            <td>35 hours</td>
+                            <td>30 hours</td>
+                        </tr>
+                        <tr>
+                            <td>Active Noise Cancellation</td>
+                            <td><i class="fas fa-check" style="color: var(--secondary-color);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--secondary-color);"></i></td>
+                            <td><i class="fas fa-times" style="color: #ef4444;"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Wireless Charging</td>
+                            <td><i class="fas fa-check" style="color: var(--secondary-color);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--secondary-color);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--secondary-color);"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Water Resistance</td>
+                            <td>IPX4</td>
+                            <td>IPX5</td>
+                            <td>IPX3</td>
+                        </tr>
+                        <tr>
+                            <td>Overall Rating</td>
+                            <td><strong>9.2/10</strong></td>
+                            <td>8.8/10</td>
+                            <td>7.5/10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="review-section" id="reviews">
+                <h2 class="section-title">Customer Reviews</h2>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">JD</div>
+                            <div>
+                                <strong>John Davis</strong>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <span style="opacity: 0.7;">March 15, 2025</span>
+                    </div>
+                    <p>"Absolutely phenomenal headphones! The sound quality is crystal clear, and the noise cancellation is top-notch. I use them for both work calls and music, and they excel at both. The 40-hour battery life is no joke - I charge them once a week!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">SR</div>
+                            <div>
+                                <strong>Sarah Robinson</strong>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <span style="opacity: 0.7;">March 10, 2025</span>
+                    </div>
+                    <p>"Great headphones overall. The comfort is exceptional - I can wear them all day without any discomfort. The only minor issue is that they're a bit bulky for travel, but the included case helps. Sound quality is excellent for the price point."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MK</div>
+                            <div>
+                                <strong>Michael Kim</strong>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <span style="opacity: 0.7;">March 5, 2025</span>
+                    </div>
+                    <p>"As an audio engineer, I'm very particular about sound quality. These headphones deliver! The frequency response is well-balanced, and the soundstage is impressively wide for closed-back headphones. Highly recommended for both professionals and audiophiles."</p>
+                </div>
+            </div>
+
+            <!-- More Products Grid -->
+            <h2 class="section-title">More Product Reviews</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800" alt="Running Shoes">
+                        <span class="product-badge">Best Seller</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">UltraRun Pro 2025</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-text">4.7 (189 reviews)</span>
+                        </div>
+                        <div class="product-price">$149.99</div>
+                        <p class="product-description">Premium running shoes with advanced cushioning technology and superior breathability.</p>
+                        <div class="product-buttons">
+                            <a href="product-running-shoes.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Compare</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800" alt="Smart Watch">
+                        <span class="product-badge">Editor's Choice</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">TechWatch Ultra</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.9 (412 reviews)</span>
+                        </div>
+                        <div class="product-price">$399.99</div>
+                        <p class="product-description">Advanced smartwatch with health monitoring, GPS, and 7-day battery life.</p>
+                        <div class="product-buttons">
+                            <a href="product-smartwatch.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Compare</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800" alt="Office Chair">
+                        <span class="product-badge">Top Rated</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">ErgoMax Pro Chair</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-text">4.6 (267 reviews)</span>
+                        </div>
+                        <div class="product-price">$599.99</div>
+                        <p class="product-description">Ergonomic office chair with lumbar support and premium materials for all-day comfort.</p>
+                        <div class="product-buttons">
+                            <a href="product-chair.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Compare</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1565538420870-da08ff96a207?w=800" alt="Coffee Machine">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">BrewMaster 5000</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.2 (98 reviews)</span>
+                        </div>
+                        <div class="product-price">$249.99</div>
+                        <p class="product-description">Professional-grade coffee machine with smart brewing technology and app control.</p>
+                        <div class="product-buttons">
+                            <a href="product-coffee.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Compare</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800" alt="Laptop">
+                        <span class="product-badge">Premium</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">ProBook Elite X1</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.8 (523 reviews)</span>
+                        </div>
+                        <div class="product-price">$1,299.99</div>
+                        <p class="product-description">High-performance laptop with latest processors, 16GB RAM, and all-day battery.</p>
+                        <div class="product-buttons">
+                            <a href="product-laptop.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Compare</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800" alt="Sunglasses">
+                        <span class="product-badge">Trending</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">StyleShade Pro</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-text">4.5 (156 reviews)</span>
+                        </div>
+                        <div class="product-price">$89.99</div>
+                        <p class="product-description">Polarized sunglasses with UV protection and stylish design for any occasion.</p>
+                        <div class="product-buttons">
+                            <a href="product-sunglasses.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Compare</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-book-open"></i>
+                        <span>StoriaHub</span>
+                    </div>
+                    <p>Your trusted source for quality content, product reviews, and platform recommendations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StoriaHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        function changeImage(src) {
+            // Extract the high-res version of the image
+            const highResSrc = src.replace('w=200', 'w=800');
+            document.getElementById('mainImage').src = highResSrc;
+        }
+    </script>
+</body>
+</html>

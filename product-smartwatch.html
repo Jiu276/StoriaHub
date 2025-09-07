@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechWatch Ultra - Product Review | StoriaHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .product-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 2rem 0;
+            color: white;
+        }
+        .breadcrumb {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #f8f8f8;
+        }
+        .thumb-images {
+            display: flex;
+            gap: 1rem;
+        }
+        .thumb-images img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        .thumb-images img:hover,
+        .thumb-images img.active {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        .product-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .stars {
+            color: #fbbf24;
+        }
+        .price-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .price-tag {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.5rem;
+        }
+        .discount-badge {
+            background: #ef4444;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .product-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        .product-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .product-features li i {
+            color: var(--secondary-color);
+            margin-right: 1rem;
+            width: 20px;
+        }
+        .variant-selector {
+            margin: 2rem 0;
+        }
+        .variant-selector h3 {
+            margin-bottom: 1rem;
+        }
+        .variant-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .variant-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .variant-btn:hover,
+        .variant-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+        .color-selector {
+            margin: 2rem 0;
+        }
+        .color-options {
+            display: flex;
+            gap: 1rem;
+        }
+        .color-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .color-btn:hover,
+        .color-btn.active {
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .specs-table {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--light-color);
+            border-radius: 10px;
+        }
+        .specs-table h2 {
+            margin-bottom: 1.5rem;
+        }
+        .specs-table table {
+            width: 100%;
+        }
+        .specs-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .specs-table td {
+            padding: 1rem 0;
+        }
+        .specs-table td:first-child {
+            font-weight: 600;
+            width: 40%;
+        }
+        .review-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--border-color);
+        }
+        .review-summary {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .review-stats {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-color);
+            border-radius: 10px;
+        }
+        .overall-rating {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .rating-bars {
+            margin-top: 1rem;
+        }
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .bar {
+            flex: 1;
+            height: 10px;
+            background: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: #fbbf24;
+        }
+        @media (max-width: 768px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+            .review-summary {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-book-open"></i>
+                        <span>StoriaHub</span>
+                    </a>
+                    <div class="nav-menu" id="navMenu">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html#blog" class="nav-link">Blog</a>
+                        <a href="products.html" class="nav-link active">Products</a>
+                        <a href="about.html" class="nav-link">About</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </div>
+                    <div class="nav-actions">
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="menu-toggle" id="menuToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="products.html">Products</a>
+                <span>/</span>
+                <span>TechWatch Ultra</span>
+            </div>
+            <h1>TechWatch Ultra - Advanced Smartwatch</h1>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <div class="product-detail">
+        <div class="product-gallery">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800" alt="TechWatch Ultra" class="main-image" id="mainImage">
+            <div class="thumb-images">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200" alt="View 1" class="active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800')">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=200" alt="View 2" onclick="changeImage(this, 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800')">
+                <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=200" alt="View 3" onclick="changeImage(this, 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800')">
+                <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=200" alt="View 4" onclick="changeImage(this, 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800')">
+            </div>
+        </div>
+        
+        <div class="product-info">
+            <h1>TechWatch Ultra</h1>
+            <div class="product-rating">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <span>4.9/5 (412 Reviews)</span>
+                <span>|</span>
+                <span>3,567 Sold</span>
+            </div>
+            
+            <div class="price-section">
+                <span class="price-tag">$399.99</span>
+                <span class="old-price">$499.99</span>
+                <span class="discount-badge">20% OFF</span>
+            </div>
+            
+            <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+                The TechWatch Ultra redefines what a smartwatch can be. With advanced health monitoring, GPS tracking, and a stunning always-on display, it's your perfect companion for fitness, productivity, and staying connected.
+            </p>
+            
+            <ul class="product-features">
+                <li><i class="fas fa-check"></i> 7-day battery life with typical use</li>
+                <li><i class="fas fa-check"></i> Advanced health monitoring (ECG, SpO2, stress)</li>
+                <li><i class="fas fa-check"></i> Built-in GPS with offline maps</li>
+                <li><i class="fas fa-check"></i> 5ATM water resistance</li>
+                <li><i class="fas fa-check"></i> Always-on AMOLED display</li>
+                <li><i class="fas fa-check"></i> 100+ workout modes</li>
+                <li><i class="fas fa-check"></i> Sleep tracking with smart alarm</li>
+                <li><i class="fas fa-check"></i> Contactless payments</li>
+            </ul>
+            
+            <div class="variant-selector">
+                <h3>Select Size</h3>
+                <div class="variant-options">
+                    <button class="variant-btn">40mm</button>
+                    <button class="variant-btn active">44mm</button>
+                    <button class="variant-btn">46mm</button>
+                </div>
+            </div>
+            
+            <div class="color-selector">
+                <h3>Select Band Color</h3>
+                <div class="color-options">
+                    <button class="color-btn active" style="background: #1f2937;" title="Midnight Black"></button>
+                    <button class="color-btn" style="background: #e5e7eb;" title="Silver"></button>
+                    <button class="color-btn" style="background: #854d0e;" title="Brown Leather"></button>
+                    <button class="color-btn" style="background: #1e40af;" title="Ocean Blue"></button>
+                    <button class="color-btn" style="background: #991b1b;" title="Sport Red"></button>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="#" class="btn btn-primary" style="flex: 1;">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </a>
+                <a href="#" class="btn btn-secondary" style="flex: 1;">
+                    <i class="fas fa-heart"></i> Add to Wishlist
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specifications -->
+    <div class="container">
+        <div class="specs-table">
+            <h2>Technical Specifications</h2>
+            <table>
+                <tr>
+                    <td>Display</td>
+                    <td>1.4" AMOLED, 454 x 454 pixels, Always-on</td>
+                </tr>
+                <tr>
+                    <td>Processor</td>
+                    <td>Dual-core 1.2GHz Cortex-A7</td>
+                </tr>
+                <tr>
+                    <td>Memory</td>
+                    <td>2GB RAM, 16GB Storage</td>
+                </tr>
+                <tr>
+                    <td>Battery Life</td>
+                    <td>7 days typical use, 14 days battery saver mode</td>
+                </tr>
+                <tr>
+                    <td>Connectivity</td>
+                    <td>Bluetooth 5.2, Wi-Fi, NFC, GPS/GLONASS</td>
+                </tr>
+                <tr>
+                    <td>Sensors</td>
+                    <td>Heart rate, ECG, SpO2, accelerometer, gyroscope, barometer</td>
+                </tr>
+                <tr>
+                    <td>Water Resistance</td>
+                    <td>5ATM (50 meters)</td>
+                </tr>
+                <tr>
+                    <td>Compatibility</td>
+                    <td>iOS 12+ and Android 8.0+</td>
+                </tr>
+                <tr>
+                    <td>Weight</td>
+                    <td>42g (without strap)</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="review-section">
+            <h2 class="section-title">Customer Reviews</h2>
+            
+            <div class="review-summary">
+                <div class="review-stats">
+                    <div class="overall-rating">4.9</div>
+                    <div class="stars" style="font-size: 1.5rem;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Based on 412 reviews</p>
+                    
+                    <div class="rating-bars">
+                        <div class="rating-bar">
+                            <span>5★</span>
+                            <div class="bar">
+                                <div class="bar-fill" style="width: 85%;"></div>
+                            </div>
+                            <span>350</span>
+                        </div>
+                        <div class="rating-bar">
+                            <span>4★</span>
+                            <div class="bar">
+                                <div class="bar-fill" style="width: 12%;"></div>
+                            </div>
+                            <span>49</span>
+                        </div>
+                        <div class="rating-bar">
+                            <span>3★</span>
+                            <div class="bar">
+                                <div class="bar-fill" style="width: 2%;"></div>
+                            </div>
+                            <span>8</span>
+                        </div>
+                        <div class="rating-bar">
+                            <span>2★</span>
+                            <div class="bar">
+                                <div class="bar-fill" style="width: 0.5%;"></div>
+                            </div>
+                            <span>3</span>
+                        </div>
+                        <div class="rating-bar">
+                            <span>1★</span>
+                            <div class="bar">
+                                <div class="bar-fill" style="width: 0.5%;"></div>
+                            </div>
+                            <span>2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">AL</div>
+                                <div>
+                                    <strong>Alex Liu</strong>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <span style="opacity: 0.7;">August 1, 2025</span>
+                        </div>
+                        <p>"Absolutely love this smartwatch! The battery life is incredible - I charge it once a week. The health tracking features are accurate and comprehensive. The always-on display is beautiful and readable even in bright sunlight. Worth every penny!"</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">EP</div>
+                                <div>
+                                    <strong>Emma Parker</strong>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <span style="opacity: 0.7;">July 20, 2025</span>
+                        </div>
+                        <p>"Coming from an Apple Watch, I was skeptical, but this exceeded my expectations. The fitness tracking is more detailed, battery life is amazing, and it works perfectly with my Android phone. The ECG feature has been really useful for monitoring my heart health."</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">RC</div>
+                                <div>
+                                    <strong>Ryan Chen</strong>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <span style="opacity: 0.7;">July 5, 2025</span>
+                        </div>
+                        <p>"Great smartwatch with excellent features. The only reason I'm giving 4 stars is that the app ecosystem isn't as robust as Apple or Samsung. But for fitness tracking, notifications, and daily use, it's perfect. The build quality is premium."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-book-open"></i>
+                        <span>StoriaHub</span>
+                    </div>
+                    <p>Your trusted source for quality content, product reviews, and platform recommendations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StoriaHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function changeImage(thumb, src) {
+            document.getElementById('mainImage').src = src;
+            // Remove active class from all thumbs
+            document.querySelectorAll('.thumb-images img').forEach(img => {
+                img.classList.remove('active');
+            });
+            // Add active class to clicked thumb
+            thumb.classList.add('active');
+        }
+
+        // Variant selector
+        document.querySelectorAll('.variant-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Color selector
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
