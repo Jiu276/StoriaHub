@@ -132,10 +132,31 @@ searchInput.addEventListener('keypress', (e) => {
 // Category Filter
 const categoryCards = document.querySelectorAll('.category-card');
 const filterButtons = document.querySelectorAll('.filter-btn');
+const categoryLinks = document.querySelectorAll('.category-link');
 
 categoryCards.forEach(card => {
     card.addEventListener('click', () => {
         const category = card.getAttribute('data-category');
+        filterArticles(category);
+        
+        // Update active filter button
+        filterButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-filter') === category) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Scroll to blog section
+        document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Footer category links
+categoryLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = link.getAttribute('data-category');
         filterArticles(category);
         
         // Update active filter button
